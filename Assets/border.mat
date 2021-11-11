@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: border
+  m_Shader: {fileID: 4800000, guid: 441b2a7fe21403f44ba3a62a72600bc4, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: ffc5271eadeb95745bb342737d478577, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise:
+        m_Texture: {fileID: 2800000, guid: e80c3c84ea861404d8a427db8b7abf04, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _blurred:
+        m_Texture: {fileID: 2800000, guid: 8ac392ef8c3c2e846a934dfedede00fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _border_mask1:
+        m_Texture: {fileID: 2800000, guid: 278268cd97118ff4daa633ddf0fba265, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _border_mask1_1:
+        m_Texture: {fileID: 2800000, guid: 278268cd97118ff4daa633ddf0fba265, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _border_remap25:
+        m_Texture: {fileID: 2800000, guid: 07b08ba839f7cf542a1bd13674a73ef6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _dotsFlame:
+        m_Texture: {fileID: 2800000, guid: 8232b5b711e72f946b2039e6c4f4f373, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _fireBG:
+        m_Texture: {fileID: 2800000, guid: 9b21924c8bf77f74387d08a607de7a5d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _flame:
+        m_Texture: {fileID: 2800000, guid: 6b50937b678fd4144877b602d623578a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _flameBlue:
+        m_Texture: {fileID: 2800000, guid: c18e85f5ed204ce43acc008630b70172, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _goldCard_mask1:
+        m_Texture: {fileID: 2800000, guid: 6c1c68d8134b2214588a0ccbdb30a58b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ramp:
+        m_Texture: {fileID: 2800000, guid: f0c751e3e6b99b549bfc463f96fc132f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _wave:
+        m_Texture: {fileID: 2800000, guid: fa3108da2fe38a748bfce58b4c9b5410, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _wave3:
+        m_Texture: {fileID: 2800000, guid: 2d2fb6cbf6b2a134a95d2dac1bdda490, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _pcg: 0
+    - bl2: 0
+    - s: 0
+    - size: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_ROOT: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_color3: {r: 0.6226415, g: 0.5901561, b: 0.34362763, a: 1}
+    - _Color_color3copy: {r: 0, g: 1, b: 1, a: 1}
+    - _Color_color4: {r: 1, g: 0.83784485, b: 0, a: 1}
+    - _Color_color4copy: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_color4copycopy: {r: 0, g: 0.37254903, b: 1, a: 1}
+    - _Color_dummy1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_dummy1copy: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_dummy1copycopy: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_image12: {r: 1, g: 0.816, b: 0.447, a: 1}
+    - _Color_image2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_image25: {r: 0, g: 0.10499692, b: 1, a: 1}
+    - _Color_image26: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_image2copy: {r: 1, g: 0.366, b: 0, a: 1}
+    - _Color_image6: {r: 0, g: 2.1230545, b: 2.6390157, a: 1}
+    - _Color_image6copy: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_image7: {r: 1.4980392, g: 1.4901961, b: 0.63529414, a: 1}
+  m_BuildTextureStacks: []
