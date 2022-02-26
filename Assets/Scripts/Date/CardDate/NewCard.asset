@@ -16,4 +16,5 @@ MonoBehaviour:
   consume: 1
   cardId: 0
   cardEffect:
-  - {fileID: 11400000, guid: eaac083dfdb33134f868df8ad4fcd37f, type: 2}
+  - effectCategory: 0
+    effectValue: 1

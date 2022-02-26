@@ -12,10 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88db46bfb55914a4bb9bed0f6e9f6d19, type: 3}
   m_Name: NewRole
   m_EditorClassIdentifier: 
+  roleName: "\u73A9\u5BB6"
+  roleExplanation: 
   cardData:
   - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
-  unusedCards: []
-  maxActionValue: 1
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  maxActionValue: 3
   magicValue: 1
   maxHP: 10
-  numberCardsDrawn: 0
+  numberCardsDrawn: 1
+  unusedCards:
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  nowCard: []
+  tombCard:
+  - {fileID: 11400000, guid: 99d4333157dbe3340b07328d33de0fd3, type: 2}
+  hp: 0
+  actionValue: 0

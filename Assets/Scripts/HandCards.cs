@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// 卡牌效果
@@ -46,6 +47,11 @@ public class HandCards : MonoBehaviour
     /// </summary>
     public float maxCard = 3;
 
+    /// <summary>
+    /// 使用卡片函式
+    /// </summary>
+    public UnityAction<CardData> OnUseCards;
+
 
     /// <summary>
     /// 手牌
@@ -83,6 +89,7 @@ public class HandCards : MonoBehaviour
     /// 觸碰卡牌
     /// </summary>
     private Transform triggerCard;
+
     private void Update()
     {
         for (int i = 0; i < ownCards.Count; i++)
@@ -90,11 +97,13 @@ public class HandCards : MonoBehaviour
             RectTransform rt = ownCards[i].GetComponent<RectTransform>();
             if(cardId != i){
                 rt.anchoredPosition3D = Vector3.Lerp(rt.anchoredPosition3D, cardPosition[i], 0.1f);
-                if(pointCard != i){
+                
+                if(pointCard != i){ //使否為指向卡
+                    //當不等於指向卡時回復原狀
                     Transform _transform = ownCards[i].transform.GetChild(0);
                     _transform.localScale = Vector3.Lerp(_transform.localScale, new Vector2(1f, 1f), 0.1f);
                     _transform.position = Vector3.Lerp(_transform.position, rt.position, 0.1f);
-                }else if(triggerCard){
+                }else if(triggerCard){ //當沒有觸碰卡片時，不執行
                     Vector3 currentPosition = triggerCard.GetComponent<RectTransform>().anchoredPosition3D;
                     currentPosition = Vector3.Lerp(currentPosition, cardPosition[i], 0.1f);
                 }
@@ -106,14 +115,16 @@ public class HandCards : MonoBehaviour
     /// <summary>
     /// 抽牌
     /// </summary>
-    public void Extract(){
+    public CardUIEffect Extract(CardData cardData){
+
         GameObject _cardGo = Instantiate(card);
         GameObject _location = Instantiate(location);
-        _location.transform.parent = cardGroup.transform;
+        _location.transform.SetParent(cardGroup.transform);
         _location.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-5f);
-        _cardGo.transform.parent = _location.transform;
+        _cardGo.transform.SetParent(_location.transform);
 
         CardUIEffect _card = _cardGo.GetComponent<CardUIEffect>();
+        
 
         _card.OnDragAction += OnCardDrag;
         _card.OnTapDownAction += OnCardDown;
@@ -124,7 +135,12 @@ public class HandCards : MonoBehaviour
         
         ownCards.Add(_cardGo);
         cardLocation.Add(_location);
+
         PositionAdjustment();
+
+        
+        _card.thisCardData = cardData;
+        return _card;
     }
     
     /// <summary>
@@ -185,19 +201,22 @@ public class HandCards : MonoBehaviour
     }
     private void OnCardDown(int _cardId){
         cardId = _cardId;
-        triggerCard.parent = ownCards[_cardId].transform;
-        triggerCard.localRotation = Quaternion.Euler(0f,0f,0f);
+
+        if(triggerCard != null){
+            triggerCard.SetParent(ownCards[cardId].transform, true);
+            triggerCard.localRotation = Quaternion.Euler(0f,0f,0f);
+        }
         grabCardRect = ownCards[cardId].GetComponent<RectTransform>();
-        ownCards[cardId].transform.parent = grabCard.transform;
+        ownCards[cardId].transform.SetParent(grabCard.transform, true);
         ownCards[cardId].transform.GetChild(0).transform.localScale = new Vector2(1.5f, 1.5f);
     }
+
+    
     private void OnCardUp(int _cardId){
         cardId = _cardId;
         
         Ray ray = Camera.main.ScreenPointToRay(ownCards[_cardId].transform.position);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 10, playingFieldMask);
-
-        Debug.Log(hit.collider);
         
         if(hit.collider){
             ownCards[cardId].GetComponent<Animator>().SetTrigger("Destroy");
@@ -205,8 +224,6 @@ public class HandCards : MonoBehaviour
             GameObject go = ownCards[cardId];
             GameObject go2 = cardLocation[cardId];
             ownCards.Remove(go);
-            
-            
             
             cardLocation.Remove(go2);
             Destroy(go2);
@@ -218,14 +235,15 @@ public class HandCards : MonoBehaviour
                 ownCards[i].GetComponent<CardUIEffect>().cardId -= 1;
             }
 
-            PositionAdjustment();
+            PositionAdjustment(); //位置調整
             cardId = -1;
 
+            OnUseCards(go.GetComponent<CardUIEffect>().thisCardData);
             Destroy(go.GetComponent<CardUIEffect>());
             Destroy(go, 1.2f);
         }else{
             ownCards[cardId].GetComponent<Animator>().SetBool("Drag", false);
-            ownCards[cardId].transform.parent = cardLocation[cardId].transform;
+            ownCards[cardId].transform.SetParent(cardLocation[cardId].transform);
             grabCardRect.pivot = new Vector2(grabCardRect.pivot.x, 0f);
             ownCards[cardId].transform.localScale = new Vector2(1f, 1f);
             cardId = -1;
@@ -236,7 +254,7 @@ public class HandCards : MonoBehaviour
         if(cardId == -1){
             pointCard = _cardId;
             triggerCard = ownCards[_cardId].transform.GetChild(0);
-            triggerCard.parent = cardGroup.transform;
+            triggerCard.SetParent(cardGroup.transform);
             triggerCard.localScale = new Vector2(1.5f, 1.5f);
             triggerCard.localRotation = Quaternion.Euler(0f,0f,0f);
         }
@@ -244,7 +262,7 @@ public class HandCards : MonoBehaviour
     }
     private void OnCardExit(int _cardId){
         if(cardId == -1){
-            triggerCard.parent = ownCards[_cardId].transform;
+            triggerCard.SetParent(ownCards[_cardId].transform);
             triggerCard.localRotation = Quaternion.Euler(0f,0f,0f);
         }
         pointCard = -1;

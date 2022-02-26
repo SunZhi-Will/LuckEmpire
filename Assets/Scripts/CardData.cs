@@ -14,6 +14,10 @@ public class CardData : ScriptableObject
         Magic
     };
     /// <summary>
+    /// 卡牌ID
+    /// </summary>
+    public int cardId;
+    /// <summary>
     /// 消耗類別
     /// </summary>
     public ConsumptionType m_consumptionType;
@@ -21,11 +25,6 @@ public class CardData : ScriptableObject
     /// 消耗
     /// </summary>
     public int consume;
-
-    /// <summary>
-    /// 卡牌ID
-    /// </summary>
-    public int cardId;
     
     /// <summary>
     /// 效果數值
