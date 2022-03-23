@@ -208,7 +208,8 @@ public class HandCards : MonoBehaviour
         }
         grabCardRect = ownCards[cardId].GetComponent<RectTransform>();
         ownCards[cardId].transform.SetParent(grabCard.transform, true);
-        ownCards[cardId].transform.GetChild(0).transform.localScale = new Vector2(1.5f, 1.5f);
+        ownCards[cardId].transform.localScale = new Vector2(0.5f, 0.5f);
+        ownCards[cardId].transform.GetChild(0).transform.localScale = new Vector2(5f, 5f);
     }
 
     
@@ -243,9 +244,9 @@ public class HandCards : MonoBehaviour
             Destroy(go, 1.2f);
         }else{
             ownCards[cardId].GetComponent<Animator>().SetBool("Drag", false);
+            ownCards[cardId].transform.localScale = new Vector2(3f, 3f);
             ownCards[cardId].transform.SetParent(cardLocation[cardId].transform);
             grabCardRect.pivot = new Vector2(grabCardRect.pivot.x, 0f);
-            ownCards[cardId].transform.localScale = new Vector2(1f, 1f);
             cardId = -1;
         }
     }
@@ -255,7 +256,7 @@ public class HandCards : MonoBehaviour
             pointCard = _cardId;
             triggerCard = ownCards[_cardId].transform.GetChild(0);
             triggerCard.SetParent(cardGroup.transform);
-            triggerCard.localScale = new Vector2(1.5f, 1.5f);
+            triggerCard.localScale = new Vector2(5f, 5f);
             triggerCard.localRotation = Quaternion.Euler(0f,0f,0f);
         }
         
